@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Services | Sipher Web Pvt. Ltd.</title>
+
+  <!-- Bootstrap & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --brand-blue:#0b1957;
+      --accent:#f0a821;
+      --muted:#616b78;
+      --card-shadow: 0 24px 54px rgba(17,24,64,0.08);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:'Poppins',sans-serif;
+      color:#152238;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      background:#fff;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      position:relative;
+      min-height:64vh;
+      padding:5rem 1rem;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      background:linear-gradient(180deg,#f3f7fb 0%, #eef3f8 60%);
+      overflow:hidden;
+    }
+    .hero::before,.hero::after,.hero .blob{content:"";position:absolute;filter:blur(60px);opacity:.65;pointer-events:none;z-index:0}
+    .hero::before{width:520px;height:520px;left:-6%;top:6%;background:radial-gradient(circle at 30% 30%,#cfe6ff 0%,rgba(159,200,255,.45)40%,transparent 70%)}
+    .hero::after{width:520px;height:520px;right:-6%;top:4%;background:radial-gradient(circle at 70% 30%,#fff3c2 0%,rgba(250,215,120,.45)40%,transparent 70%)}
+    .hero .blob{width:420px;height:420px;left:6%;bottom:-6%;background:radial-gradient(circle at 20% 30%,#efe3ff 0%,rgba(216,184,255,.35)30%,transparent 70%)}
+
+    .pill{display:inline-block;background:rgba(255,255,255,.95);padding:.55rem 1.1rem;border-radius:999px;font-weight:700;color:#2b56c7;box-shadow:0 8px 18px rgba(12,25,80,.06);margin-bottom:1rem}
+    .hero h1{font-family:"Playfair Display",serif;font-weight:900;color:#172a6e;margin:0;font-size:clamp(2rem,6.2vw,3.8rem);line-height:1}
+    .hero h1 .underline{position:relative;padding-bottom:.12rem;display:inline-block}
+    .hero h1 .underline::after{content:"";position:absolute;left:0;right:0;height:.36rem;background:var(--accent);border-radius:6px;bottom:-0.12rem}
+    .hero p.lead{color:var(--muted);max-width:980px;margin:1rem auto 1.6rem;line-height:1.65;font-size:1.02rem}
+
+    .btn-ghost{background:transparent;border:2px solid rgba(27,32,84,.12);padding:.6rem 1.1rem;border-radius:10px;color:#26304a;font-weight:700}
+    .btn-primary-hero{background:linear-gradient(90deg,#1f1a86,#2d3ed3);color:#fff;border:none;padding:.6rem 1.2rem;border-radius:10px;font-weight:700;box-shadow:0 10px 30px rgba(29,41,112,.12)}
+
+    /* ===== SERVICES GRID ===== */
+    main.container.services{padding:3.5rem 0}
+    .service-card{background:#fff;border-radius:14px;overflow:hidden;box-shadow:var(--card-shadow);transition:transform .28s ease,box-shadow .28s ease;display:flex;flex-direction:column;min-height:260px}
+    .service-card:hover{transform:translateY(-10px);box-shadow:0 36px 80px rgba(20,30,60,.12)}
+    .service-media{height:150px;background-size:cover;background-position:center;position:relative}
+    .service-badge{position:absolute;top:10px;right:10px;background:rgba(255,255,255,.95);padding:.35rem .6rem;border-radius:8px;font-weight:700;color:#1b2a6f;box-shadow:0 8px 18px rgba(12,25,80,.06);font-size:.82rem}
+    .service-body{padding:1rem 1rem 1.2rem;display:flex;flex-direction:column;gap:.6rem;flex:1}
+    .service-title{font-weight:700;color:#172a6e;margin:0;font-size:1.05rem}
+    .service-desc{color:var(--muted);font-size:.95rem;margin:0;flex:1}
+    .service-meta{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center}
+    .meta-tag{background:var(--accent);color:#07103a;padding:.3rem .55rem;border-radius:8px;font-weight:700;font-size:.82rem}
+    .service-footer{display:flex;justify-content:space-between;align-items:center;gap:.5rem}
+    .btn-req{background:var(--brand-blue);color:#fff;border:none;padding:.45rem .8rem;border-radius:8px;font-weight:700}
+
+    /* ===== COMMITMENT ===== */
+    .commit-section{padding:2.5rem 0;background:linear-gradient(180deg, rgba(240,168,33,0.02)0%, rgba(33,76,217,0.01)100%)}
+    .commit-card{background:#fff;border-radius:12px;padding:18px;box-shadow:0 10px 30px rgba(12,25,80,.04);text-align:center}
+
+    /* ===== FAQ ===== */
+    .faq{padding:2.5rem 0}
+    .accordion-button:not(.collapsed){color:var(--brand-blue);font-weight:700}
+    .searchbox{max-width:720px;margin:0 auto 1rem}
+
+    /* ===== CTA STATS ===== */
+    .cta-stats{padding:2rem 0;text-align:center}
+    .stat{padding:18px;background:#fff;border-radius:10px;box-shadow:0 12px 28px rgba(12,25,80,.04)}
+
+    /* ===== FOOTER ===== */
+    footer{background:linear-gradient(180deg,#0d1243,#0b1957);color:#fff;padding:40px 0}
+
+    /* ===== Animations system ===== */
+    .animate-on-scroll{opacity:0;transform:translateY(18px);transition:none;will-change:transform,opacity}
+    .animate-on-scroll.in-view{opacity:1;transform:translateY(0)}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes popIn{0%{opacity:0;transform:scale(.94) translateY(8px)}60%{opacity:1;transform:scale(1.02) translateY(-6px)}100%{opacity:1;transform:scale(1) translateY(0)}}
+    .fade-up{animation-name:fadeUp;animation-duration:700ms;animation-fill-mode:both;animation-timing-function:cubic-bezier(.2,.9,.3,1)}
+    .pop-in{animation-name:popIn;animation-duration:650ms;animation-fill-mode:both;animation-timing-function:cubic-bezier(.22,.8,.32,1)}
+
+    .icon-float i{animation:floatY 4.5s ease-in-out infinite;display:inline-block;transform-origin:center}
+    @keyframes floatY{0%{transform:translateY(0)}50%{transform:translateY(-6px)}100%{transform:translateY(0)}}
+
+    @media (max-width:768px){.service-media{height:110px}.hero{padding:3rem 1rem;min-height:48vh}}
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="blob" aria-hidden="true"></div>
+    <div class="container hero-inner text-center">
+      <div class="pill animate-on-scroll" data-animate="scroll" data-anim="pop-in" data-delay="0">Our Premium Services</div>
+      <h1 class="animate-on-scroll" data-animate="scroll" data-anim="pop-in" data-delay="0.08">
+        Exceptional Services <span class="underline">Tailored for You</span>
+      </h1>
+      <p class="lead animate-on-scroll" data-animate="scroll" data-anim="fade-up" data-delay="0.16">
+        Discover a wide range of customizable services crafted to meet your business needs — experience the perfect blend of creativity and cutting-edge technology.
+      </p>
+
+      <div class="d-flex justify-content-center gap-2 mt-3 animate-on-scroll" data-animate="scroll" data-anim="fade-up" data-delay="0.22">
+        <a class="btn btn-primary-hero" href="">Explore Services</a>
+        <a class="btn btn-ghost" href="#contact">Get Started</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- SERVICES GRID -->
+  <main class="container services" id="services">
+    <div class="row g-4">
+      <!-- Many service cards (copy / adjust as needed). Images are placeholders from Unsplash. -->
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3 animate-on-scroll" data-animate="scroll" data-anim="fade-up" data-delay="0.08">
+        <article class="service-card">
+          <div class="service-media" style="background-image:url('https://images.unsplash.com/photo-1526378723669-15c9bcf6b2a4?auto=format&fit=crop&w=1400&q=60')">
+            <div class="service-badge">Web Dev</div>
+          </div>
+          <div class="service-body">
+            <h4 class="service-title">Website Development</h4>
+            <p class="service-desc">Custom websites built for performance, accessibility and SEO — responsive and secure.</p>
+            <div class="service-footer">
+              <div class="service-meta"><span class="meta-tag">React</span><span class="meta-tag">Next.js</span></div>
+              <div><button class="btn btn-sm btn-req" data-bs-toggle="modal" data-bs-target="#requestModal" data-service="Website Development">Request</button></div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3 animate-on-scroll" data-animate="scroll" data-anim="fade-up" data-delay="0.12">
+        <article class="service-card">
+          <div class="service-media" style="background-image:url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1400&q=60')">
+            <div class="service-badge">App</div>
+          </div>
+          <div class="service-body">
+            <h4 class="service-title">Mobile App Development</h4>
+            <p class="service-desc">Native & cross-platform apps for iOS and Android — crafted for engagement and speed.</p>
+            <div class="service-footer">
+              <div class="service-meta"><span class="meta-tag">iOS</span><span class="meta-tag">Android</span></div>
+              <div><button class="btn btn-sm btn-req" data-bs-toggle="modal" data-bs-target="#requestModal" data-service="Mobile App Development">Request</button></div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3 animate-on-scroll" data-animate="scroll" data-anim="fade-up" data-delay="0.16">
+        <article class="service-card">
+          <div class="service-media" style="background-image:url('https://images.unsplash.com/photo-1531497865144-04639b06f8d8?auto=format&fit=crop&w=1400&q=60')">
+            <div class="service-badge">Custom</div>
+          </div>
+          <div class="service-body">
+            <h4 class="service-title">Custom Software</h4>
+            <p class="service-desc">End-to-end custom platforms tailored to your workflows — scalable & maintainable.</p>
+            <div class="service-footer">
+              <div class="service-meta"><span class="meta-tag">API</span></div>
+              <div><button class="btn btn-sm btn-req" data-bs-toggle="modal" data-bs-target="#requestModal" data-service="Custom Software">Request</button></div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3 animate-on-scroll" data-animate="scroll" data-anim="fade-up" data-delay="0.20">
+        <article class="service-card">
+          <div class="service-media" style="background-image:url('https://images.unsplash.com/photo-1518779578993-ec3579fee39f?auto=format&fit=crop&w=1400&q=60')">
+            <div class="service-badge">ERP</div>
+          </div>
+          <div class="service-body">
+            <h4 class="service-title">ERP & Product Dev</h4>
+            <p class="service-desc">ERP integration and product engineering to streamline operations and reporting.</p>
+            <div class="service-footer">
+              <div class="service-meta"><span class="meta-tag">ERP</span></div>
+              <div><button class="btn btn-sm btn-req" data-bs-toggle="modal" data-bs-target="#requestModal" data-service="ERP & Product Dev">Request</button></div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- second row of services -->
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3 animate-on-scroll" data-animate="scroll" data-anim="fade-up" data-delay="0.24">
+        <article class="service-card">
+          <div class="service-media" style="background-image:url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1400&q=60')">
+            <div class="service-badge">UI/UX</div>
+          </div>
+          <div class="service-body">
+            <h4 class="service-title">UI / UX Design</h4>
+            <p class="service-desc">Research-led UX, prototypes and polished visual design delivered in Figma.</p>
+            <div class="service-footer">
+              <div class="service-meta"><span class="meta-tag">Figma</span></div>
+              <div><button class="btn btn-sm btn-req" data-bs-toggle="modal" data-bs-target="#requestModal" data-service="UI/UX Design">Request</button></div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3 animate-on-scroll" data-animate="scroll" data-anim="fade-up" data-delay="0.28">
+        <article class="service-card">
+          <div class="service-media" style="background-image:url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1400&q=60')">
+            <div class="service-badge">Cloud</div>
+          </div>
+          <div class="service-body">
+            <h4 class="service-title">Cloud Solutions</h4>
+            <p class="service-desc">Cloud architecture, migration and managed services across AWS/Azure/GCP.</p>
+            <div class="service-footer">
+              <div class="service-meta"><span class="meta-tag">AWS</span><span class="meta-tag">Azure</span></div>
+              <div><button class="btn btn-sm btn-req" data-bs-toggle="modal" data-bs-target="#requestModal" data-service="Cloud Solutions">Request</button></div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3 animate-on-scroll" data-animate="scroll" data-anim="fade-up" data-delay="0.32">
+        <article class="service-card">
+          <div class="service-media" style="background-image:url('https://images.unsplash.com/photo-1505083585362-01c37b7d6a8f?auto=format&fit=crop&w=1400&q=60')">
+            <div class="service-badge">Digital</div>
+          </div>
+          <div class="service-body">
+            <h4 class="service-title">Digital Marketing</h4>
+            <p class="service-desc">SEO, content, social and paid campaigns designed to grow traffic & conversions.</p>
+            <div class="service-footer">
+              <div class="service-meta"><span class="meta-tag">SEO</span><span class="meta-tag">PPC</span></div>
+              <div><button class="btn btn-sm btn-req" data-bs-toggle="modal" data-bs-target="#requestModal" data-service="Digital Marketing">Request</button></div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3 animate-on-scroll" data-animate="scroll" data-anim="fade-up" data-delay="0.36">
+        <article class="service-card">
+          <div class="service-media" style="background-image:url('https://images.unsplash.com/photo-1485217988980-11786ced9454?auto=format&fit=crop&w=1400&q=60')">
+            <div class="service-badge">SEO</div>
+          </div>
+          <div class="service-body">
+            <h4 class="service-title">SEO Optimization</h4>
+            <p class="service-desc">Technical SEO, on-page optimization and content strategy to boost rankings.</p>
+            <div class="service-footer">
+              <div class="service-meta"><span class="meta-tag">Analytics</span></div>
+              <div><button class="btn btn-sm btn-req" data-bs-toggle="modal" data-bs-target="#requestModal" data-service="SEO Optimization">Request</button></div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Add more services as required (duplicate structure) -->
+
+    </div>
+
+    <div class="d-flex justify-content-center mt-4">
+      <button class="btn btn-outline-primary">Load More Services</button>
+    </div>
+  </main>
+
+  <!-- COMMITMENT TO EXCELLENCE -->
+  <section class="commit-section">
+    <div class="container">
+      <h3 class="section-title text-center animate-on-scroll" data-animate="scroll" data-anim="pop-in" data-delay="0.06">Our Commitment to Excellence</h3>
+      <div class="row g-3 mt-3">
+        <div class="col-md-4 animate-on-scroll" data-animate="scroll" data-anim="fade-up" data-delay="0.12">
+          <div class="commit-card">
+            <div class="icon-float mb-2"><i class="fa-solid fa-lightbulb fa-2x" style="color:var(--accent)"></i></div>
+            <h5>Innovation</h5>
+            <p class="mb-0 text-muted">Constant R&D to keep your solutions modern and competitive.</p>
+          </div>
+        </div>
+
+        <div class="col-md-4 animate-on-scroll" data-animate="scroll" data-anim="fade-up" data-delay="0.18">
+          <div class="commit-card">
+            <div class="icon-float mb-2"><i class="fa-solid fa-user-shield fa-2x" style="color:var(--accent)"></i></div>
+            <h5>Security First</h5>
+            <p class="mb-0 text-muted">Data protection and secure-by-design practices in every delivery.</p>
+          </div>
+        </div>
+
+        <div class="col-md-4 animate-on-scroll" data-animate="scroll" data-anim="fade-up" data-delay="0.24">
+          <div class="commit-card">
+            <div class="icon-float mb-2"><i class="fa-solid fa-people-roof fa-2x" style="color:var(--accent)"></i></div>
+            <h5>Customer Focus</h5>
+            <p class="mb-0 text-muted">Clear communication, iterative delivery and measurable outcomes.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq container">
+    <h3 class="section-title text-center animate-on-scroll" data-animate="scroll" data-anim="pop-in" data-delay="0.06">Frequently Asked Questions</h3>
+
+    <div class="searchbox animate-on-scroll" data-animate="scroll" data-anim="fade-up" data-delay="0.12">
+      <input id="faqSearch" class="form-control" placeholder="Search a question..." />
+    </div>
+
+    <div class="accordion" id="faqAccordion">
+      <div class="accordion-item animate-on-scroll" data-animate="scroll" data-anim="fade-up" data-delay="0.16">
+        <h2 class="accordion-header" id="f1">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c1" aria-expanded="false" aria-controls="c1">
+            What services do you offer?
+          </button>
+        </h2>
+        <div id="c1" class="accordion-collapse collapse" aria-labelledby="f1" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">We offer web & mobile development, custom software, cloud, ERP, UI/UX, digital marketing, SEO and more.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item animate-on-scroll" data-animate="scroll" data-anim="fade-up" data-delay="0.22">
+        <h2 class="accordion-header" id="f2">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c2" aria-expanded="false" aria-controls="c2">
+            How can I request a quote?
+          </button>
+        </h2>
+        <div id="c2" class="accordion-collapse collapse" aria-labelledby="f2" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">Click any Request button on a service card, fill the quick form, or email <a href="mailto:info@sipherweb.com">info@sipherweb.com</a>.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item animate-on-scroll" data-animate="scroll" data-anim="fade-up" data-delay="0.28">
+        <h2 class="accordion-header" id="f3">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c3" aria-expanded="false" aria-controls="c3">
+            What is your delivery process?
+          </button>
+        </h2>
+        <div id="c3" class="accordion-collapse collapse" aria-labelledby="f3" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">We follow discovery → design → develop → test → deploy (agile sprints) with continuous demos and milestones.</div>
+        </div>
+      </div>
+
+      <!-- add more FAQ items as needed -->
+    </div>
+  </section>
+
+  <!-- CTA STATS -->
+  <section class="container cta-stats mt-4">
+    <div class="row g-3">
+      <div class="col-md-4"><div class="stat"><h3 class="mb-0">95%</h3><p class="mb-0 text-muted">Client Satisfaction</p></div></div>
+      <div class="col-md-4"><div class="stat"><h3 class="mb-0">500+</h3><p class="mb-0 text-muted">Projects Delivered</p></div></div>
+      <div class="col-md-4"><div class="stat"><h3 class="mb-0">5+</h3><p class="mb-0 text-muted">Years of Experience</p></div></div>
+    </div>
+    <div class="text-center mt-4">
+      <a class="btn btn-primary-hero" href="#contact">Schedule a Consultation</a>
+    </div>
+  </section>
+
+  <!-- REQUEST MODAL -->
+  <div class="modal fade" id="requestModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <form class="modal-content" id="requestForm" action="#" method="post" enctype="multipart/form-data">
+        <div class="modal-header">
+          <h5 class="modal-title" id="requestTitle">Request a Quote</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" id="serviceName" name="service" value="">
+          <div class="row g-3">
+            <div class="col-md-6"><label class="form-label">Your Name</label><input class="form-control" name="name" required></div>
+            <div class="col-md-6"><label class="form-label">Email</label><input type="email" class="form-control" name="email" required></div>
+            <div class="col-md-6"><label class="form-label">Phone</label><input class="form-control" name="phone"></div>
+            <div class="col-md-6"><label class="form-label">Budget (optional)</label><input class="form-control" name="budget"></div>
+            <div class="col-12"><label class="form-label">Project Brief</label><textarea class="form-control" name="brief" rows="4"></textarea></div>
+            <div class="col-12"><label class="form-label">Attachment (optional)</label><input type="file" class="form-control" name="attachment" accept=".pdf,.doc,.zip,.png,.jpg"></div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-outline-secondary" type="button" data-bs-dismiss="modal">Cancel</button>
+          <button class="btn btn-primary-hero" type="submit">Send Request</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer id="contact" class="mt-5">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-md-4">
+          <h5 style="color:#fff">Sipher Web Pvt. Ltd.</h5>
+          <p style="color:rgba(255,255,255,0.85)">Delivering excellence in web development and digital solutions. Transform your vision into reality with our innovative approach.</p>
+          <a class="btn btn-sm btn-ghost" style="background:transparent;border:1px solid rgba(255,255,255,.12);color:#fff" href="mailto:info@sipherweb.com">Contact Us</a>
+        </div>
+        <div class="col-md-4">
+          <h6 style="color:#fff">Quick Links</h6>
+          <ul class="list-unstyled" style="color:rgba(255,255,255,0.85)">
+            <li><a href="#" style="color:inherit;text-decoration:none">About</a></li>
+            <li><a href="#" style="color:inherit;text-decoration:none">Services</a></li>
+            <li><a href="#" style="color:inherit;text-decoration:none">Careers</a></li>
+            <li><a href="#" style="color:inherit;text-decoration:none">Portfolio</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4" style="color:rgba(255,255,255,0.85)">
+          <h6>Contact</h6>
+          <p>Lucknow, Uttar Pradesh, India<br>+91 8318230713<br>info@sipherweb.com</p>
+        </div>
+      </div>
+      <div class="text-center mt-4" style="color:rgba(255,255,255,0.6)">© 2025 Sipher Web Pvt. Ltd. | All Rights Reserved</div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- IntersectionObserver animation (staggered) -->
+  <script>
+  (function(){
+    const options = { root:null, rootMargin:"0px 0px -12% 0px", threshold: 0.06 };
+    const io = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        if (el.classList.contains('in-view')) { obs.unobserve(el); return; }
+        const anim = el.dataset.anim || 'fade-up';
+        const delay = parseFloat(el.dataset.delay || '0');
+        const animClass = (anim === 'pop-in') ? 'pop-in' : 'fade-up';
+        el.classList.add('animate-on-scroll');
+        el.style.animationDelay = delay + 's';
+        requestAnimationFrame(() => {
+          el.classList.add('in-view');
+          el.classList.add(animClass);
+        });
+        obs.unobserve(el);
+      });
+    }, options);
+
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('[data-animate="scroll"]').forEach(n => io.observe(n));
+    });
+  })();
+  </script>
+
+  <!-- Helpers: prefill modal and demo form -->
+  <script>
+    // Prefill request modal with service name
+    document.addEventListener('click', function(e){
+      const btn = e.target.closest('[data-bs-target="#requestModal"]');
+      if (!btn) return;
+      const svc = btn.getAttribute('data-service') || '';
+      document.getElementById('serviceName').value = svc;
+      const title = document.getElementById('requestTitle');
+      if (title) title.textContent = svc ? ('Request — ' + svc) : 'Request a Quote';
+    });
+
+    // Demo submit handler (replace with server integration)
+    document.getElementById('requestForm').addEventListener('submit', function(ev){
+      ev.preventDefault();
+      alert('Thank you — your request was received (demo). Replace this JS with real form submission.');
+      var modalEl = document.getElementById('requestModal');
+      var bsModal = bootstrap.Modal.getInstance(modalEl);
+      bsModal.hide();
+      this.reset();
+    });
+
+    // FAQ search filter
+    document.getElementById('faqSearch').addEventListener('input', function(){
+      const q = this.value.trim().toLowerCase();
+      document.querySelectorAll('#faqAccordion .accordion-item').forEach(item=>{
+        const txt = item.textContent.toLowerCase();
+        item.style.display = q && !txt.includes(q) ? 'none' : '';
+      });
+    });
+  </script>
+</body>
+</html>

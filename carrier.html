@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Careers | Sipher Web Pvt. Ltd.</title>
+
+  <!-- Bootstrap 5, Font Awesome -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --brand-blue: #0b1957;
+      --accent-yellow: #f0a821;
+      --muted: #5b6270;
+      --card-shadow: 0 18px 40px rgba(15,20,50,0.08);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      color: #152238;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      background: #fff;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      position: relative;
+      min-height: 56vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 4.5rem 1rem;
+      overflow: hidden;
+      background: linear-gradient(180deg,#f3f7fb 0%, #eef3f8 60%);
+    }
+    .hero::before, .hero::after, .hero .blob {
+      content:""; position:absolute; filter: blur(60px); opacity:.65; pointer-events:none; z-index:0;
+    }
+    .hero::before { width:520px;height:520px; left:-6%; top:6%; background: radial-gradient(circle at 30% 30%, #cfe6ff 0%, rgba(159,200,255,.45) 40%, transparent 70%); }
+    .hero::after  { width:520px;height:520px; right:-6%; top:4%; background: radial-gradient(circle at 70% 30%, #fff3c2 0%, rgba(250,215,120,.45) 40%, transparent 70%); }
+    .hero .blob { width:420px;height:420px; left:6%; bottom:-6%; background: radial-gradient(circle at 20% 30%, #efe3ff 0%, rgba(216,184,255,.35) 30%, transparent 70%); }
+
+    .hero .pill {
+      display:inline-block; padding:10px 22px; border-radius:999px; background:rgba(255,255,255,.95);
+      color:#2b56c7; font-weight:600; box-shadow: 0 8px 18px rgba(12,25,80,.06); margin-bottom:1rem;
+    }
+    .hero h1 { font-family: "Playfair Display", serif; font-weight:900; color:#172a6e; letter-spacing:-0.01em; margin:0; font-size:clamp(2rem,5.5vw,3.8rem);}
+    .hero h1 .underline { position:relative; display:inline-block; padding-bottom:.12em; }
+    .hero h1 .underline::after { content:""; position:absolute; left:0; right:0; height:.35rem; background:var(--accent-yellow); bottom:-0.12em; border-radius:6px; }
+    .hero p.lead { color:var(--muted); margin-top:1rem; max-width:900px; margin-left:auto; margin-right:auto; line-height:1.7; }
+
+    .hero .btn {
+      border-radius:10px; padding:.7rem 1.2rem; font-weight:600;
+    }
+    .btn-primary-hero { background: linear-gradient(90deg,#1f1a86,#2d3ed3); color:white; border:none; box-shadow: 0 10px 30px rgba(29,41,112,.12); }
+    .btn-outline-hero { background:transparent; border:2px solid rgba(27,32,84,.12); color:#212a44; }
+
+    /* ===== CAROUSEL (feature cards) ===== */
+    .feature-carousel .carousel-item { padding: 2rem 0; }
+    .feature-card { background:white; border-radius:12px; padding:18px; box-shadow: 0 14px 32px rgba(20,30,70,0.06); display:flex; gap:12px; align-items:center; }
+    .feature-card .icon { background:var(--accent-yellow); color:#111; width:56px; height:56px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:20px; flex:0 0 56px; }
+    .feature-card h6 { margin:0; font-weight:700; color:#172a6e; }
+    .feature-card p { margin:0; color:var(--muted); font-size:.95rem; }
+
+    /* ===== OPENINGS GRID ===== */
+    .openings { padding: 3rem 0; }
+    .job-card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 26px;
+      box-shadow: var(--card-shadow);
+      transition: transform .28s ease, box-shadow .28s ease;
+      min-height: 220px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+    }
+    .job-card:hover { transform: translateY(-10px); box-shadow: 0 26px 60px rgba(15,20,50,0.12); }
+    .job-meta { color: var(--muted); font-size:.95rem; margin-bottom:12px; }
+    .apply-btn { background: var(--accent-yellow); border:none; color:#0b1957; font-weight:700; border-radius:8px; padding:.55rem .9rem; }
+
+    /* how to apply */
+    .how-to-apply { background: #fff; border-radius:12px; padding: 28px; box-shadow: 0 16px 40px rgba(20,25,60,0.06); margin-top:1.5rem; text-align:center; }
+
+    /* footer */
+    footer { background: linear-gradient(180deg,#0d1243,#0b1957); color:#fff; padding:40px 0; }
+
+    /* animation system */
+    .animate-on-scroll { opacity: 0; transform: translateY(18px); transition: none; will-change: transform, opacity; }
+    .animate-on-scroll.in-view { opacity: 1; transform: translateY(0); }
+
+    @keyframes fadeUp { from { opacity:0; transform: translateY(22px); } to { opacity:1; transform: translateY(0); } }
+    @keyframes popIn { 0%{opacity:0; transform:scale(.94) translateY(8px)} 60%{opacity:1; transform:scale(1.02) translateY(-6px)} 100%{opacity:1; transform:scale(1) translateY(0)} }
+    .fade-up { animation-name: fadeUp; animation-duration: 700ms; animation-fill-mode: both; animation-timing-function: cubic-bezier(.2,.9,.3,1); }
+    .pop-in  { animation-name: popIn; animation-duration: 650ms; animation-fill-mode: both; animation-timing-function: cubic-bezier(.22,.8,.32,1); }
+
+    /* icon float */
+    .icon-float i, .feature-card .icon i { animation: floatY 4.5s ease-in-out infinite; transform-origin:center; }
+    @keyframes floatY { 0%{transform:translateY(0)} 50%{transform:translateY(-6px)} 100%{transform:translateY(0)} }
+
+    /* responsive tweaks */
+    @media (max-width: 992px) {
+      .hero { padding: 3.2rem 1rem; min-height:49vh; }
+      .job-card { min-height: 200px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <header class="hero" role="banner">
+    <div class="blob" aria-hidden="true"></div>
+    <div class="container hero-inner text-center">
+      <span class="pill animate-on-scroll" data-animate="scroll" data-anim="pop-in" data-delay="0">Service Packages</span>
+      <h1 class="animate-on-scroll" data-animate="scroll" data-anim="pop-in" data-delay="0.08">Join Our <span class="underline">Dynamic Team</span></h1>
+      <p class="lead animate-on-scroll" data-animate="scroll" data-anim="fade-up" data-delay="0.14">
+        Be part of a talented team working on cutting-edge projects that inspire innovation. We're always on the lookout for passionate individuals who want to grow and make an impact with us.
+      </p>
+
+      <div class="d-flex justify-content-center gap-3 mt-3 animate-on-scroll" data-animate="scroll" data-anim="fade-up" data-delay="0.20">
+        <a class="btn btn-primary-hero btn me-2" href="#openings">View Open Positions</a>
+        <a class="btn btn-outline-hero btn" href="#culture">Learn About Culture</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- FEATURE CAROUSEL -->
+  <section class="container feature-carousel" aria-label="Why work with us" style="margin-top:-40px;">
+    <div id="featureCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner py-3">
+        <div class="carousel-item active">
+          <div class="d-flex justify-content-center">
+            <div class="col-10 col-md-8 col-lg-6">
+              <div class="feature-card p-3">
+                <div class="icon"><i class="fa-solid fa-users"></i></div>
+                <div>
+                  <h6>Growing Team</h6>
+                  <p>Join 50+ talented professionals working on meaningful projects and real impact.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <div class="d-flex justify-content-center">
+            <div class="col-10 col-md-8 col-lg-6">
+              <div class="feature-card p-3">
+                <div class="icon"><i class="fa-solid fa-briefcase"></i></div>
+                <div>
+                  <h6>Flexible Work Options</h6>
+                  <p>We support remote, hybrid and on-site working — create a setup that suits you.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <div class="d-flex justify-content-center">
+            <div class="col-10 col-md-8 col-lg-6">
+              <div class="feature-card p-3">
+                <div class="icon"><i class="fa-solid fa-rocket"></i></div>
+                <div>
+                  <h6>Career Growth</h6>
+                  <p>Continuous learning opportunities, mentorship and internal growth paths.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button class="carousel-control-prev" type="button" data-bs-target="#featureCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#featureCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- WHY WORK WITH US -->
+  <section class="container py-5" id="culture">
+    <h2 class="section-title text-center animate-on-scroll" data-animate="scroll" data-anim="pop-in" data-delay="0.06">Why Work With Us?</h2>
+    <div class="row g-4 mt-3">
+      <div class="col-md-4 animate-on-scroll" data-animate="scroll" data-anim="fade-up" data-delay="0.10">
+        <div class="feature-card">
+          <div class="icon"><i class="fa-solid fa-lightbulb"></i></div>
+          <div>
+            <h6>Innovative Projects</h6>
+            <p>Work on cutting-edge technologies and projects that make a real impact in the tech world.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 animate-on-scroll" data-animate="scroll" data-anim="fade-up" data-delay="0.16">
+        <div class="feature-card">
+          <div class="icon"><i class="fa-solid fa-handshake"></i></div>
+          <div>
+            <h6>Flexible Work Environment</h6>
+            <p>We value work-life balance and offer remote/hybrid working options.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 animate-on-scroll" data-animate="scroll" data-anim="fade-up" data-delay="0.22">
+        <div class="feature-card">
+          <div class="icon"><i class="fa-solid fa-chalkboard-teacher"></i></div>
+          <div>
+            <h6>Learning & Growth</h6>
+            <p>Enhance your skills through continuous learning and hands-on experience with modern tech.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CURRENT OPENINGS -->
+  <section class="container openings" id="openings">
+    <h2 class="section-title text-center animate-on-scroll" data-animate="scroll" data-anim="pop-in" data-delay="0.06">Current Openings</h2>
+
+    <div class="row g-4 mt-4">
+      <!-- job card -->
+      <div class="col-md-6">
+        <div class="job-card animate-on-scroll" data-animate="scroll" data-anim="fade-up" data-delay="0.10">
+          <div>
+            <h5>Frontend Developer</h5>
+            <div class="job-meta">Location: Remote or On-site (Lucknow, India) • Type: Full-time</div>
+            <p>We are looking for a skilled Frontend Developer experienced with React and Tailwind CSS to join our dynamic team.</p>
+          </div>
+          <div class="d-flex justify-content-between align-items-center mt-3">
+            <a class="btn apply-btn" href="#" data-bs-toggle="modal" data-bs-target="#applyModal" data-role="Frontend Developer">Apply Now &nbsp;<i class="fa-solid fa-arrow-right"></i></a>
+            <small class="text-muted">Posted: 2 days ago</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- job card -->
+      <div class="col-md-6">
+        <div class="job-card animate-on-scroll" data-animate="scroll" data-anim="fade-up" data-delay="0.16">
+          <div>
+            <h5>Backend Developer</h5>
+            <div class="job-meta">Location: Remote • Type: Full-time</div>
+            <p>Join our backend team to build efficient, scalable solutions using Node.js, Express, and MongoDB.</p>
+          </div>
+          <div class="d-flex justify-content-between align-items-center mt-3">
+            <a class="btn apply-btn" href="#" data-bs-toggle="modal" data-bs-target="#applyModal" data-role="Backend Developer">Apply Now &nbsp;<i class="fa-solid fa-arrow-right"></i></a>
+            <small class="text-muted">Posted: 6 days ago</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- job card -->
+      <div class="col-md-6">
+        <div class="job-card animate-on-scroll" data-animate="scroll" data-anim="fade-up" data-delay="0.22">
+          <div>
+            <h5>UI/UX Designer</h5>
+            <div class="job-meta">Location: On-site (Lucknow, India) • Type: Contract</div>
+            <p>Design beautiful, user-friendly interfaces and work closely with our development team to bring projects to life.</p>
+          </div>
+          <div class="d-flex justify-content-between align-items-center mt-3">
+            <a class="btn apply-btn" href="#" data-bs-toggle="modal" data-bs-target="#applyModal" data-role="UI/UX Designer">Apply Now &nbsp;<i class="fa-solid fa-arrow-right"></i></a>
+            <small class="text-muted">Posted: 10 days ago</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- job card -->
+      <div class="col-md-6">
+        <div class="job-card animate-on-scroll" data-animate="scroll" data-anim="fade-up" data-delay="0.28">
+          <div>
+            <h5>Product Manager</h5>
+            <div class="job-meta">Location: Remote or On-site (Lucknow, India) • Type: Full-time</div>
+            <p>Lead product development from ideation to launch, working closely with cross-functional teams.</p>
+          </div>
+          <div class="d-flex justify-content-between align-items-center mt-3">
+            <a class="btn apply-btn" href="#" data-bs-toggle="modal" data-bs-target="#applyModal" data-role="Product Manager">Apply Now &nbsp;<i class="fa-solid fa-arrow-right"></i></a>
+            <small class="text-muted">Posted: 12 days ago</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- job card -->
+      <div class="col-md-6">
+        <div class="job-card animate-on-scroll" data-animate="scroll" data-anim="fade-up" data-delay="0.34">
+          <div>
+            <h5>Marketing Specialist</h5>
+            <div class="job-meta">Location: Remote or On-site (Lucknow, India) • Type: Part-time</div>
+            <p>Help us grow our brand and reach new audiences through strategic marketing campaigns and initiatives.</p>
+          </div>
+          <div class="d-flex justify-content-between align-items-center mt-3">
+            <a class="btn apply-btn" href="#" data-bs-toggle="modal" data-bs-target="#applyModal" data-role="Marketing Specialist">Apply Now &nbsp;<i class="fa-solid fa-arrow-right"></i></a>
+            <small class="text-muted">Posted: 18 days ago</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- job card -->
+      <div class="col-md-6">
+        <div class="job-card animate-on-scroll" data-animate="scroll" data-anim="fade-up" data-delay="0.40">
+          <div>
+            <h5>Customer Support Specialist</h5>
+            <div class="job-meta">Location: Remote or On-site (Lucknow, India) • Type: Contract</div>
+            <p>Provide exceptional customer service and technical support to our users across various platforms.</p>
+          </div>
+          <div class="d-flex justify-content-between align-items-center mt-3">
+            <a class="btn apply-btn" href="#" data-bs-toggle="modal" data-bs-target="#applyModal" data-role="Customer Support Specialist">Apply Now &nbsp;<i class="fa-solid fa-arrow-right"></i></a>
+            <small class="text-muted">Posted: 25 days ago</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- How to Apply -->
+    <div class="how-to-apply animate-on-scroll" data-animate="scroll" data-anim="pop-in" data-delay="0.48">
+      <h4>How to Apply</h4>
+      <p>Send your resume and cover letter to <a href="mailto:careers@sipherweb.com">careers@sipherweb.com</a> or use the Apply button next to the job to submit a quick application. We will get back to you as soon as possible.</p>
+      <div class="mt-2">
+        <a class="btn btn-outline-hero me-2" href="mailto:careers@sipherweb.com"><i class="fa-solid fa-envelope"></i> Email Us</a>
+        <a class="btn apply-btn" href="#openings"><i class="fa-solid fa-briefcase"></i> Browse All Jobs</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPLY MODAL -->
+  <div class="modal fade" id="applyModal" tabindex="-1" aria-labelledby="applyModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <form class="modal-content" id="applyForm" action="#" method="post" enctype="multipart/form-data">
+        <div class="modal-header">
+          <h5 class="modal-title" id="applyModalLabel">Apply for Position</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" name="position" id="applyPosition" value="">
+          <div class="mb-3">
+            <label class="form-label">Full name</label>
+            <input type="text" name="name" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Email address</label>
+            <input type="email" name="email" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Phone (optional)</label>
+            <input type="tel" name="phone" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Upload Resume</label>
+            <input type="file" name="resume" class="form-control" accept=".pdf,.doc,.docx" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Cover Note</label>
+            <textarea name="note" rows="3" class="form-control" placeholder="A short note about your fit"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn apply-btn">Submit Application</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="mt-5">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-md-4">
+          <h5 style="color:#fff">Sipher Web Pvt. Ltd.</h5>
+          <p style="color:rgba(255,255,255,0.85);">Delivering excellence in web development and digital solutions. Transform your vision into reality with our innovative approach.</p>
+        </div>
+        <div class="col-md-4">
+          <h6 style="color:#fff">Quick Links</h6>
+          <ul class="list-unstyled" style="color:rgba(255,255,255,0.85);">
+            <li><a href="#" style="color:inherit; text-decoration:none">About Us</a></li>
+            <li><a href="#" style="color:inherit; text-decoration:none">Services</a></li>
+            <li><a href="#" style="color:inherit; text-decoration:none">Portfolio</a></li>
+            <li><a href="#" style="color:inherit; text-decoration:none">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4" style="color:rgba(255,255,255,0.85);">
+          <h6>Contact</h6>
+          <p>Lucknow, Uttar Pradesh, India<br>+91 8318230713<br>info@sipherweb.com</p>
+        </div>
+      </div>
+
+      <div class="text-center mt-4" style="color:rgba(255,255,255,0.6);">© 2025 Sipher Web Pvt. Ltd. | All Rights Reserved</div>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- IntersectionObserver animation system (lightweight) -->
+  <script>
+    (function(){
+      const options = { root:null, rootMargin:"0px 0px -10% 0px", threshold: 0.08 };
+      const io = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          const el = entry.target;
+          if (el.classList.contains('in-view')) { obs.unobserve(el); return; }
+          const anim = el.dataset.anim || 'fade-up';
+          const delay = parseFloat(el.dataset.delay || '0');
+          const animClass = (anim === 'pop-in') ? 'pop-in' : 'fade-up';
+          el.classList.add('animate-on-scroll');
+          el.style.animationDelay = delay + 's';
+          requestAnimationFrame(()=> {
+            el.classList.add('in-view');
+            el.classList.add(animClass);
+          });
+          obs.unobserve(el);
+        });
+      }, options);
+      document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('[data-animate="scroll"]').forEach(n => io.observe(n));
+      });
+    })();
+  </script>
+
+  <!-- small JS to prefill modal position field when Apply clicked -->
+  <script>
+    document.addEventListener('click', function(e){
+      const btn = e.target.closest('[data-bs-target="#applyModal"]');
+      if (!btn) return;
+      const role = btn.getAttribute('data-role') || '';
+      const input = document.getElementById('applyPosition');
+      if (input) input.value = role;
+      const modalTitle = document.getElementById('applyModalLabel');
+      if (modalTitle) modalTitle.textContent = role ? ('Apply — ' + role) : 'Apply for Position';
+    });
+
+    // Example: simple form submit handler (just prevents default and shows a message)
+    document.getElementById('applyForm').addEventListener('submit', function(ev){
+      ev.preventDefault();
+      // TODO: replace with real POST/Fetch to server endpoint
+      alert('Thanks! Your application has been captured (demo). Replace JS to submit to your server.');
+      var modalEl = document.getElementById('applyModal');
+      var modal = bootstrap.Modal.getInstance(modalEl);
+      modal.hide();
+      this.reset();
+    });
+  </script>
+</body>
+</html>
